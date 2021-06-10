@@ -1,0 +1,16 @@
+#include <Stepper.h>
+
+// creamos el objeto motor
+Stepper motor(2048, 8, 10, 9, 11);
+ 
+void setup() {
+  motor.setSpeed(2);
+}
+ 
+void loop() {
+  motor.step(200); // cantidad de pasos
+  delay(2000);      // 2 seg.
+  
+  motor.step(-300); // sentido inverso
+  delay(2000);      // 2 seg.
+}
