@@ -1,0 +1,45 @@
+int IN1 = 8;      // pin digital 8 a IN1
+int IN2 = 9;      // pin digital 9 a IN2
+int IN3 = 10;     // pin digital 10 a IN3
+int IN4 = 11;     // pin digital 11 a IN4
+int tiempo = 20;  // tiempo entre pasos, minimo 10 ms.
+// Array bidimensional con la secuencia de pasos
+int paso [8][4] ={
+  {1, 0, 0, 0},
+  {1, 1, 0, 0},
+  {0, 1, 0, 0},
+  {0, 1, 1, 0},
+  {0, 0, 1, 0},
+  {0, 0, 1, 1},
+  {0, 0, 0, 1},
+  {1, 0, 0, 1}
+};
+
+void setup(){
+  // todos los pines se configuran salida
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
+}
+
+void loop(){
+  // 512*8 = 4096 pasos
+  for (int i = 0; i < 512; i++){
+    // bucle que recorre el array fila a fila
+    for (int i = 0; i < 8; i++){
+      // valores que se van a aplicar
+      digitalWrite(IN1, paso[i][0]);
+      digitalWrite(IN2, paso[i][1]);
+      digitalWrite(IN3, paso[i][2]);
+      digitalWrite(IN4, paso[i][3]);
+      delay(tiempo);
+    }
+  }
+  // paramos 5 segundos
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
+  delay(tiempo);
+}
