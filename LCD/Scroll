@@ -1,0 +1,15 @@
+#include <LiquidCrystal.h>		// importa libreria
+
+LiquidCrystal lcd(7, 6, 5, 4, 3, 2);	// pines RS, E, D4, D5, D6, D7
+
+void setup() {
+  lcd.begin(16, 2);			//16 columnas y 2 lineas
+}
+
+void loop() {
+  lcd.setCursor(2, 0);			// ubica cursor en columna 2 y linea 0
+  lcd.print("Texto muy largo a mostrar");		// Texto de hasta 40 caracteres
+  lcd.scrollDisplayLeft();		// funcion que desplaza de a un caracter por vez hacia la izquierda
+  // Para scrollear a la derecha utilizar lcd.scrollDisplayRight();
+  delay(400);	
+}
