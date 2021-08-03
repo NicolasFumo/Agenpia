@@ -1,0 +1,19 @@
+String texto; // Variable (objeto) para guardar texto
+int dataint;
+float datafloat
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  if(Serial.available()){ // Pregunto si hay datos para leer en el puerto serie, de existir..
+    texto = Serial.readString(); // los leemos y lo guardamos en la variable texto
+
+    // Luego podemos hacer lo que queramos con esta variable texto
+    
+    // (Este codigo es solo para leer texto)
+    // para leer un numero seria:
+    // dataint = Serial.parseInt();
+    // datafloat = Serial.parseFloat();
+  }
+}
