@@ -1,6 +1,6 @@
 #include <IRremote.h>		// importa libreria IRremote
 
-#define SENSOR 11;    		// sensor VS1838R a pin digital 11  
+#define SENSOR 11    		// sensor VS1838R a pin digital 11  
  
 void setup() { 
   Serial.begin(9600);     				// inicializa comunicacion serie a 9600 bps
