@@ -1,0 +1,12 @@
+-- Archivo de tarjetas --
+http://arduino.esp8266.com/stable/package_esp8266com_index.json
+
+-- DRIVERS --
+CP1202 (es el más utilizado en la versión v0.9/V1) 
+• https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers 
+ 
+CH340 (el más común en la versión v1.0/V2) 
+• http://www.wch.cn/product/CH340.html 
+ 
+FT232RL (es el más raro de ver pero hay algunas placas que lo llevan) 
+• https://www.ftdichip.com/Products/ICs/FT232R.htm
