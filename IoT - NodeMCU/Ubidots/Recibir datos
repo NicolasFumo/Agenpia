@@ -1,0 +1,26 @@
+#include <Ubidots.h>
+#define  UBIDOTS_TOKEN ""  // Token extraido de la cuenta de ubidots
+#define  WIFI_SSID ""      // Nombre red WIFI
+#define  WIFI_PASS ""      // Contraseña red WIFI
+#define NOMBRE_DISPOSITIVO "" // Nombre con el que veremos a nuestra placa en ubidots
+
+Ubidots ubidots(UBIDOTS_TOKEN, UBI_HTTP);
+
+int valor = 0;
+
+void setup() {
+  Serial.begin(115200);
+  ubidots.wifiConnect(WIFI_SSID, WIFI_PASS);
+  // ubidots.setDebug(true);  // Descomentar para ver mensajes de ubidot por consola
+}
+
+void loop() {
+  valor = ubidots.get(NOMBRE_DISPOSITIVO,"nombreVariable");
+  if(valor != ERROR_VALUE){
+    Serial.println(valor);
+  }
+  else{
+    Serial.println("Error obteniendo el valor");
+  }
+  delay(1000);
+}
