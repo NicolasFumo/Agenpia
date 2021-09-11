@@ -1,0 +1,9 @@
+- Pagina principal de Ubidots -
+https://ubidots.com/
+
+- Libreria de ubidots para IDE Arduino -
+https://github.com/ubidots/ubidots-esp8266/
+
+- Antes del primer uso con Ubidots -
+Hay que instalar la version 2.7.2 de la ESP8266 Community (en el gestor de tarjetas)
+Esto es para evitar que nos dé error al compilar un proyecto con ubidots
