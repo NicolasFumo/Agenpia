@@ -1,0 +1,17 @@
+#include <Servo.h>      // incluye libreria de Servo
+#define PINSERVO 2
+Servo servo1;     // crea objeto
+
+int PULSOMIN = 1000;    // pulso minimo en microsegundos
+int PULSOMAX = 2000;    // pulso maximo en microsegundos
+
+
+void setup()
+{
+  servo1.attach(PINSERVO, PULSOMIN, PULSOMAX);  // inicializacion de servo
+}
+
+void loop()
+{
+  servo1.write(0);    // ubica el servo a 0 grados
+}
