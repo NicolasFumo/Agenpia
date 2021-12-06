@@ -1,6 +1,9 @@
 -- Archivo de tarjetas --
 http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
+-- Presentacion e instalacion de la tarjeta --
+https://docs.google.com/presentation/d/1FpFORe_L-ymhu0eweSD1FLWVZcOhgUWph9U6izHGEuo/edit?usp=sharing
+
 -- DRIVERS --
 CP1202 (es el más utilizado en la versión v0.9/V1) 
 • https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers 
