@@ -1,0 +1,78 @@
+#include <Ubidots.h>
+#include <DHT.h>
+#include <Wire.h>      // libreria de comunicacion por I2C
+#include <LCD.h>      // libreria para funciones de LCD
+#include <LiquidCrystal_I2C.h>    // libreria para LCD por I2C
+
+#define  UBIDOTS_TOKEN "BBFF-WwrOX6fbgsOAhHiLsgieewZdkv64VE"  // Token extraido de la cuenta de ubidots
+#define  WIFI_SSID "Agenpia"      // Nombre red WIFI
+#define  WIFI_PASS "agenpia2019"      // Contraseña red WIFI
+#define NOMBRE_DISPOSITIVO "clase" // Nombre con el que veremos a nuestra placa en ubidots
+
+Ubidots ubidots(UBIDOTS_TOKEN, UBI_HTTP);
+DHT dht(D3, DHT11);
+LiquidCrystal_I2C lcd (0x27, 2, 1, 0, 4, 5, 6, 7); // DIR, E, RW, RS, D4, D5, D6, D7
+
+int pot = 0;
+int led = 0;
+float temperatura = 0;
+float humedad = 0;
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(D0, OUTPUT);
+  dht.begin();
+  ubidots.wifiConnect(WIFI_SSID, WIFI_PASS);
+  lcd.setBacklightPin(3, POSITIVE); // puerto P3 de PCF8574 como positivo
+  lcd.setBacklight(HIGH);   // habilita iluminacion posterior de LCD
+  lcd.begin(16, 2);     // 16 columnas por 2 lineas para LCD 1602A
+  lcd.clear();      // limpia pantalla
+}
+
+void loop() {
+  // --- LECTURA DE VALORES
+  pot = analogRead(A0);
+  Serial.println(pot);
+  humedad = dht.readHumidity();
+  temperatura = dht.readTemperature();
+
+  led = ubidots.get(NOMBRE_DISPOSITIVO, "led");
+  if (led != ERROR_VALUE) {
+    if (led == 1) {
+      // encender led
+      digitalWrite(D0, LOW);
+    }
+    else {
+      // apagar led
+      digitalWrite(D0, HIGH);
+    }
+  }
+  else {
+    Serial.println("Error obteniendo el valor");
+  }
+  // --- PROCESO
+
+  // --- SALIDA
+  lcd.setCursor(0, 0);    // ubica cursor en columna 0 y linea 0
+  lcd.print("Temp: ");  // escribe el texto
+  lcd.print(temperatura);
+  lcd.setCursor(0, 1);    // ubica cursor en columna 0 y linea 0
+  lcd.print("Hum: ");  // escribe el texto
+  lcd.print(humedad);
+
+  ubidots.add("potenciometro", pot); // Agregamos la variable para ser enviada
+
+  bool enviado = false;
+  enviado = ubidots.send(NOMBRE_DISPOSITIVO); // Enviamos toda la data a ubidots
+
+  if (enviado) {
+    // Si se enviaron correctamente el IF va a dar verdadero
+    Serial.println("Valores enviados al servidor");
+  }
+  else {
+    // Si hubo algun error, puedo mostrar un mensaje en consola
+    Serial.println("Error al enviar");
+  }
+
+  delay(1000);
+}
