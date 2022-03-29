@@ -1,0 +1,24 @@
+#define pinLed 13
+#define pinPulsador 7
+
+bool estadoPulsador = LOW;
+bool estadoLed = LOW;
+
+void setup() {
+  pinMode(pinLed, OUTPUT); // Pin de salida
+  pinMode(pinPulsador, INPUT); // Pin de entrada
+}
+
+void loop() {
+  estadoPulsador = digitalRead(pinPulsador);
+  if (estadoPulsador) {
+    if (estadoLed == LOW) {
+      estadoLed = HIGH;
+    }
+    else {
+      estadoLed = LOW;
+    }
+    delay(300);
+  }
+  digitalWrite(pinLed, estadoLed);
+}
