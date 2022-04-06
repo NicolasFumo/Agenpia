@@ -1,0 +1,19 @@
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  MostrarMensaje(ConvertirGradosCentigrados(116));
+   
+  delay(10000);
+  
+}
+
+int ConvertirGradosCentigrados(int temperatura){
+  int conversion = (temperatura - 32) * 5 / 9;
+  return conversion;
+}
+
+void MostrarMensaje(int mensaje) {
+  Serial.println(mensaje);
+}
