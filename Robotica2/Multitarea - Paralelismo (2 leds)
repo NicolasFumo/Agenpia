@@ -1,0 +1,34 @@
+#define pinRojo 2
+#define pinVerde 4
+
+unsigned long tiempoActual = 0;
+unsigned long tiempoTranscurrido = 0;
+unsigned long tiempoTranscurrido2 = 0;
+
+void setup() {
+  pinMode(pinRojo, OUTPUT);
+  pinMode(pinVerde, OUTPUT);
+}
+void loop() {
+  tiempoActual = millis();
+
+  delayPersonalizado(1000, tiempoTranscurrido, pinVerde);
+  
+  delayPersonalizado(250, tiempoTranscurrido2, pinRojo);
+}
+
+void delayPersonalizado(unsigned long intervalo, unsigned long &transcurrido, int pin) {
+  if (tiempoActual - transcurrido > intervalo) {
+    transcurrido = tiempoActual;
+
+    CambiarLed(pin);
+  }
+}
+
+void CambiarLed(int numeroPin) {
+  // digitalWrite(numeroPin, !digitalRead(numeropin));
+
+  int estadoLed = digitalRead(numeroPin);
+  int estadoFinal = !estadoLed;
+  digitalWrite(numeroPin, estadoFinal);
+}
