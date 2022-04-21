@@ -1,0 +1,49 @@
+#define ledRojo 2
+#define ledAmarillo 3
+#define ledVerde 4
+
+#define ledRojo2 5
+#define ledAmarillo2 6
+#define ledVerde2 7
+
+void setup() { // setup
+  pinMode(ledRojo, OUTPUT);
+  pinMode(ledAmarillo, OUTPUT);
+  pinMode(ledVerde, OUTPUT);
+  pinMode(ledRojo2, OUTPUT);
+  pinMode(ledAmarillo2, OUTPUT);
+  pinMode(ledVerde2, OUTPUT);
+}
+
+void loop() {
+  // digitalWrite(ledRojo,HIGH);
+  // delay (5000);
+  digitalWrite(ledAmarillo, HIGH);
+  delay(1000);
+  digitalWrite(ledRojo, LOW);
+  digitalWrite(ledAmarillo, LOW);
+  digitalWrite(ledVerde, HIGH);
+  delay(2000);
+  digitalWrite(ledVerde, LOW);
+  digitalWrite(ledAmarillo, HIGH);
+  delay(1000);
+  digitalWrite(ledAmarillo, LOW);
+  digitalWrite(ledRojo,HIGH); // MOVIMOS LA 19 ACA
+
+  
+  // segundo semaforo
+  
+  // digitalWrite(ledRojo2,HIGH);
+  // delay (5000);
+  digitalWrite(ledAmarillo2, HIGH);
+  delay(1000);
+  digitalWrite(ledRojo2, LOW);
+  digitalWrite(ledAmarillo2, LOW);
+  digitalWrite(ledVerde2, HIGH);
+  delay(2000);
+  digitalWrite(ledVerde2, LOW);
+  digitalWrite(ledAmarillo2, HIGH);
+  delay(1000);
+  digitalWrite(ledAmarillo2, LOW);
+  digitalWrite(ledRojo2, HIGH); // MOVIMOS LA 36 ACA
+}
