@@ -1,0 +1,18 @@
+#define pinPulsador 3
+#define led 13
+void setup() {
+  pinMode(pinPulsador, INPUT);
+  pinMode(led, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  if(digitalRead(pinPulsador) == HIGH){
+    digitalWrite(led, HIGH);
+    Serial.println("Pulsado");
+  }
+  else{
+    digitalWrite(led, LOW);
+    Serial.println("Suelto");
+  }
+}
