@@ -1,0 +1,29 @@
+unsigned long transcurrido = 0;
+unsigned long tiempoLed = 0;
+unsigned long intervalo = 1000; // aca va el intervalo
+void setup() {
+  pinMode(4, INPUT_PULLUP);
+  pinMode(13, OUTPUT);
+  pinMode(7, OUTPUT);
+}
+void loop() {
+  transcurrido = millis();
+
+// DETECCION DEL PULSADOR
+  if (digitalRead(4) == LOW) {
+    digitalWrite(13, HIGH);
+  }
+  else {
+    digitalWrite(13, LOW);
+  }
+// FIN DETECCION PULSADOR
+
+// DESTELLO DEL LED CADA 500ms
+  if (transcurrido - tiempoLed > intervalo) {
+    tiempoLed = transcurrido;
+
+    digitalWrite(7, !digitalRead(7)); // INVIERTO EL PIN (HIGH-LOW-HIGH)
+
+  }
+// FIN DESTELLO LED
+}
