@@ -1,0 +1,18 @@
+int LecturaPulsador = 0;
+String tecla = "hola";
+
+void setup() {
+  pinMode(5, INPUT_PULLUP);
+  pinMode(13, OUTPUT);
+}
+
+void loop() {
+  LecturaPulsador = digitalRead(5);
+
+  if (LecturaPulsador == LOW) {
+    digitalWrite(13, HIGH);
+  }
+  else {
+    digitalWrite(13, LOW);
+  }
+}
