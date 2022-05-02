@@ -1,0 +1,18 @@
+void setup() {
+  Serial.begin(9600);
+
+  mostrarNumero(sumar(78, 9));
+}
+
+void loop() {
+
+}
+
+void mostrarNumero(int numero) {
+  Serial.print("El valor que me pasaste es: ");
+  Serial.println(numero);
+}
+
+int sumar(int numeroA, int numeroB) {
+    return numeroA + numeroB;
+}
