@@ -1,0 +1,32 @@
+unsigned long transcurrido = 0;
+
+unsigned long tiempoLed = 0;
+unsigned long tiempoLed2 = 0;
+
+void setup() {
+  pinMode(4, INPUT_PULLUP);
+  pinMode(13, OUTPUT);
+  pinMode(7, OUTPUT);
+}
+
+void loop() {
+  transcurrido = millis();
+
+  if (digitalRead(4) == LOW) {
+    digitalWrite(13, HIGH);
+  }
+  else {
+    digitalWrite(13, LOW);
+  }
+
+  AccionAsincrona(tiempoLed, 1000, 7);
+  AccionAsincrona(tiempoLed2, 350, 9);
+}
+
+void AccionAsincrona(unsigned long &tiempoEjecucion,int intervalo, int pinLed ){
+  if (transcurrido - tiempoEjecucion > intervalo) {
+    tiempoEjecucion = transcurrido;
+
+    digitalWrite(pinLed, !digitalRead(pinLed));
+  }
+}
