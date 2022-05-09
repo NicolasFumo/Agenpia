@@ -1,0 +1,14 @@
+int valorPotenciometro = 0;
+int valorCorregido = 0;
+
+void setup() {
+  pinMode(5, OUTPUT);
+}
+
+void loop() {
+  valorPotenciometro = analogRead(A2);
+
+  valorCorregido = map(valorPotenciometro, 0, 1023, 0, 255);
+  
+  analogWrite(5, valorCorregido);
+}
