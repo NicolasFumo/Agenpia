@@ -1,0 +1,39 @@
+#include <DHT.h>
+#include <DHT_U.h>
+#include <Wire.h> 
+#include <LCD.h> 
+#include <LiquidCrystal_I2C.h>
+
+DHT sensor (5, DHT11);
+LiquidCrystal_I2C lcd (0x27, 2, 1, 0, 4, 5, 6, 7); // DIR, E, RW, RS, D4, D5, D6, D7
+
+float temperatura;
+float humedad;
+float sensTermica;
+
+void setup() {
+  sensor.begin();
+
+  lcd.setBacklightPin(3, POSITIVE);
+  lcd.setBacklight(HIGH); 
+  lcd.begin(16, 2); 
+  lcd.clear();
+}
+
+void loop() {
+  temperatura = sensor.readTemperature(); // ºC
+  humedad = sensor.readHumidity();
+  sensTermica = sensor.computeHeatIndex(temperatura, humedad, false); // ºC
+
+  lcd.setCursor(0,0);
+  lcd.print("T:");
+  lcd.print(temperatura);
+  lcd.setCursor(9,0);
+  lcd.print("H:");
+  lcd.print(humedad);
+  lcd.setCursor(0,1);
+  lcd.print("ST:");
+  lcd.print(sensTermica);
+  
+  delay(1000);
+}
