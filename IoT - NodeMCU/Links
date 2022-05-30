@@ -1,6 +1,8 @@
 -- Archivo de tarjetas --
 http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
+Hay que instalar la version 2.7.2 de la ESP8266 Community (en el gestor de tarjetas)
+
 -- Presentacion e instalacion de la tarjeta --
 https://docs.google.com/presentation/d/1FpFORe_L-ymhu0eweSD1FLWVZcOhgUWph9U6izHGEuo/edit?usp=sharing
 
