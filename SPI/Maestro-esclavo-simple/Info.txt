@@ -1,0 +1,3 @@
+Pagina con toda la explicacion de SPI
+
+https://proyectoarduino.com/arduino-bus-spi/
